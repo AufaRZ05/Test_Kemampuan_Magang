@@ -26,10 +26,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.aufarizazakipradana607062330127.testmagang.R
 import com.aufarizazakipradana607062330127.testmagang.navigation.Screen
+import com.aufarizazakipradana607062330127.testmagang.data.AuthRepository
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 import com.aufarizazakipradana607062330127.testmagang.ui.theme.TestMagangTheme
-import com.aufarizazakipradana607062330127.testmagang.data.AuthRepository // Import AuthRepository
-import android.widget.Toast // Import untuk Toast
-import androidx.compose.ui.platform.LocalContext // Import untuk Context (digunakan Toast)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,7 +41,7 @@ fun Login(navController: NavController) {
     var showEmailError by remember { mutableStateOf(false) }
     var showPasswordError by remember { mutableStateOf(false) }
 
-    val context = LocalContext.current // Mendapatkan context untuk Toast
+    val context = LocalContext.current
     val hatocaRed = Color(0xFFC73030)
 
     Scaffold(
@@ -145,11 +145,11 @@ fun Login(navController: NavController) {
                         showPasswordError = !isPasswordValid
 
                         if (isEmailValid && isPasswordValid) {
-                            // Mencari user yang cocok di AuthRepository
                             val user = AuthRepository.registeredUsers.find { it.email == email && it.passwordHash == password }
                             if (user != null) {
-                                AuthRepository.loggedInUser = user // Simpan user yang login
-                                navController.navigate(Screen.Home.route) {
+                                AuthRepository.loggedInUser = user
+                                // Navigasi ke FeaturesScreen setelah login berhasil
+                                navController.navigate(Screen.Features.route) { // <-- PERUBAHAN DI SINI
                                     popUpTo(navController.graph.startDestinationId) {
                                         inclusive = true
                                     }
