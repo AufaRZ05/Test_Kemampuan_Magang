@@ -29,10 +29,10 @@ import com.aufarizazakipradana607062330127.testmagang.navigation.Screen
 import com.aufarizazakipradana607062330127.testmagang.data.AuthRepository
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.aufarizazakipradana607062330127.testmagang.ui.theme.TestMagangTheme
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(navController: NavController) {
     var email by remember { mutableStateOf("") }
@@ -57,7 +57,7 @@ fun Login(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "HATOCA",
+                text = stringResource(id = R.string.hatoca_title),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 color = hatocaRed,
@@ -70,7 +70,7 @@ fun Login(navController: NavController) {
                     email = it
                     showEmailError = false
                 },
-                label = { Text("Email") },
+                label = { Text(stringResource(id = R.string.email_label))  },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 modifier = Modifier.fillMaxWidth(),
                 isError = showEmailError,
@@ -78,7 +78,7 @@ fun Login(navController: NavController) {
             )
             if (showEmailError) {
                 Text(
-                    text = "Email tidak boleh kosong dan harus valid.",
+                    text = stringResource(id = R.string.email_error_empty_or_invalid),
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.align(Alignment.Start)
@@ -93,7 +93,7 @@ fun Login(navController: NavController) {
                     password = it
                     showPasswordError = false
                 },
-                label = { Text("Password") },
+                label = { Text(stringResource(id = R.string.password_label)) },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 trailingIcon = {
@@ -111,7 +111,7 @@ fun Login(navController: NavController) {
             )
             if (showPasswordError) {
                 Text(
-                    text = "Password tidak boleh kosong.",
+                    text = stringResource(id = R.string.password_error_empty),
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.align(Alignment.Start)
@@ -121,12 +121,12 @@ fun Login(navController: NavController) {
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Forgot Password",
+                text = stringResource(id = R.string.forgot_password),
                 color = hatocaRed,
                 fontSize = 14.sp,
                 modifier = Modifier
                     .align(Alignment.End)
-                    .clickable { /* TODO: Implement forgot password */ }
+                    .clickable {  }
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -148,8 +148,7 @@ fun Login(navController: NavController) {
                             val user = AuthRepository.registeredUsers.find { it.email == email && it.passwordHash == password }
                             if (user != null) {
                                 AuthRepository.loggedInUser = user
-                                // Navigasi ke FeaturesScreen setelah login berhasil
-                                navController.navigate(Screen.Features.route) { // <-- PERUBAHAN DI SINI
+                                navController.navigate(Screen.Features.route) {
                                     popUpTo(navController.graph.startDestinationId) {
                                         inclusive = true
                                     }
@@ -173,7 +172,7 @@ fun Login(navController: NavController) {
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Button(
-                    onClick = { /* TODO: Implement fingerprint login */ },
+                    onClick = { },
                     colors = ButtonDefaults.buttonColors(containerColor = hatocaRed),
                     modifier = Modifier
                         .weight(0.3f)
@@ -183,7 +182,7 @@ fun Login(navController: NavController) {
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.baseline_fingerprint_24),
-                        contentDescription = "Fingerprint Login",
+                        contentDescription = stringResource(id = R.string.fingerprint_login_desc),
                         modifier = Modifier.size(28.dp)
                     )
                 }
@@ -195,9 +194,9 @@ fun Login(navController: NavController) {
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Don't have an account? ", color = Color.Gray)
+                Text(text = stringResource(id = R.string.no_account_text), color = Color.Gray)
                 Text(
-                    text = "Sign Up",
+                    text = stringResource(id = R.string.signup_text),
                     color = hatocaRed,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.clickable {

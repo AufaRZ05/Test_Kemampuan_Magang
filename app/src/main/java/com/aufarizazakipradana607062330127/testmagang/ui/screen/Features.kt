@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,18 +29,15 @@ import com.aufarizazakipradana607062330127.testmagang.R
 import com.aufarizazakipradana607062330127.testmagang.data.AuthRepository
 import com.aufarizazakipradana607062330127.testmagang.ui.theme.TestMagangTheme
 
-// Data class untuk setiap item fitur (tidak ada perubahan)
 data class FeatureItem(
     val imageResId: Int,
     val title: String
 )
 
 @Composable
-fun Features(navController: NavController) { // <-- UBAH NAMA FUNGSI COMPOSE KE "Features"
-    // Ambil username dari AuthRepository
-    val username = AuthRepository.loggedInUser?.username ?: "Pengguna" // Default "Pengguna" jika tidak ada user login
+fun Features(navController: NavController) {
+    val username = AuthRepository.loggedInUser?.username ?: stringResource(id = R.string.user_default_name)
 
-    // Daftar fitur yang akan ditampilkan (tidak ada perubahan)
     val features = remember {
         listOf(
             FeatureItem(R.drawable.lucky_draw, "Lucky Draw"),
@@ -70,14 +68,13 @@ fun Features(navController: NavController) { // <-- UBAH NAMA FUNGSI COMPOSE KE 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Hello, $username",
+                text = stringResource(id = R.string.hello_user, username),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
-            // Tambahkan Spacer tambahan untuk jarak lebih jauh
             Spacer(modifier = Modifier.height(16.dp))
 
             Card(
@@ -100,7 +97,7 @@ fun Features(navController: NavController) { // <-- UBAH NAMA FUNGSI COMPOSE KE 
                         color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        text = "Kumpulkan Koin Hasjrat",
+                        text = stringResource(id = R.string.collect_coins_text),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
@@ -108,10 +105,10 @@ fun Features(navController: NavController) { // <-- UBAH NAMA FUNGSI COMPOSE KE 
             }
         }
 
-        Spacer(modifier = Modifier.height(24.dp)) // Jarak antara Card dengan grid fitur
+        Spacer(modifier = Modifier.height(24.dp))
 
         LazyVerticalGrid(
-            columns = GridCells.Fixed(4), // 4 kolom
+            columns = GridCells.Fixed(4),
             contentPadding = PaddingValues(8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -154,7 +151,7 @@ fun FeatureCard(item: FeatureItem) {
 
 @Preview(showBackground = true, widthDp = 360, heightDp = 720)
 @Composable
-fun FeaturesPreview() { // <-- UBAH NAMA FUNGSI PREVIEW KE "FeaturesPreview"
+fun FeaturesPreview() {
     TestMagangTheme {
         Features(navController = rememberNavController())
     }

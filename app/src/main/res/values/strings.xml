@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">TestMagang</string>
+    <string name="started">Getting Started</string>
+    <string name="hatoca_title">HATOCA</string>
+    <string name="email_label">Email</string>
+    <string name="email_error_empty_or_invalid">Email tidak boleh kosong dan harus valid.</string>
+    <string name="password_label">Password</string>
+    <string name="password_error_empty">Password tidak boleh kosong.</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login_button">Login</string>
+    <string name="fingerprint_login_desc">Fingerprint Login</string>
+    <string name="no_account_text">Don\'t have an account? </string>
+    <string name="signup_text">Sign Up</string>
+    <string name="login_failed_toast">Login Gagal: Email atau password salah.</string>
+    <string name="fill_all_fields_toast">Harap lengkapi semua isian.</string>
+
+    <string name="register_title">REGISTER</string>
+    <string name="username_label">Username</string>
+    <string name="username_error_empty_or_taken">Username tidak boleh kosong atau sudah terdaftar.</string>
+    <string name="password_min_length_error">Password minimal 6 karakter.</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="confirm_password_mismatch_error">Password tidak cocok.</string>
+    <string name="register_button">Register</string>
+    <string name="have_account_text">Already have an account? </string>
+    <string name="login_text">Login</string>
+    <string name="account_created_toast">Akun berhasil dibuat!</string>
+    <string name="fix_input_errors_toast">Harap perbaiki kesalahan input.</string>
+
+    <string name="hello_user">Hello, %1$s</string>
+    <string name="collect_coins_text">Kumpulkan Koin Hasjrat</string>
+    <string name="user_default_name">Pengguna</string>
+    <string name="lucky_draw">Lucky Draw</string>
+    <string name="book_test_drive">Book Test Drive</string>
+    <string name="book_service">Book Service</string>
+    <string name="ths">THS</string>
+    <string name="catalog">Catalog</string>
+    <string name="calculator">Calculator</string>
+    <string name="claim_insurance">Claim Insurance</string>
+    <string name="service_berkala">Service Berkala</string>
+    <string name="tips_and_trick">Tips &amp; Trick</string>
+    <string name="trade_in">Trade In</string>
+    <string name="dealer_location">Dealer Location</string>
 </resources>

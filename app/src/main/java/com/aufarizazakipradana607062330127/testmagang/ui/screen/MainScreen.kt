@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -38,7 +39,7 @@ fun MainScreen(navController: NavController) {
                     navController.navigate(Screen.Login.route)
                 }
             ) {
-                Text(text = "Getting Started")
+                Text(text = stringResource(id = R.string.started))
             }
         }
     }
