@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aufarizazakipradana607062330127.testmagang.ui.screen.Login
 import com.aufarizazakipradana607062330127.testmagang.ui.screen.MainScreen
+import com.aufarizazakipradana607062330127.testmagang.ui.screen.Register
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
@@ -19,6 +20,9 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(route = Screen.Login.route) {
             Login(navController = navController)
+        }
+        composable(route = Screen.Register.route) {
+            Register(navController = navController)
         }
     }
 }
